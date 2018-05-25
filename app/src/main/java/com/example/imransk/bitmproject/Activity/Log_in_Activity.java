@@ -26,7 +26,7 @@ public class Log_in_Activity extends AppCompatActivity {
 
 
     private FirebaseAuth firebaseAuth;
-    private  FirebaseUser firebaseUser;
+    private FirebaseUser firebaseUser;
 
     String email;
     String password;
@@ -42,10 +42,10 @@ public class Log_in_Activity extends AppCompatActivity {
         login_btn = findViewById(R.id.login_Btn);
 
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
-        if (firebaseAuth.getCurrentUser()!=null) {
+        if (firebaseAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
@@ -56,26 +56,26 @@ public class Log_in_Activity extends AppCompatActivity {
                 email = email_ET.getText().toString();
                 password = pass_ET.getText().toString();
 
-                if (TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     email_ET.setError("Enter E-mail");
                     email_ET.requestFocus();
                     return;
                 }
-                if (TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     pass_ET.setError("Enter Password");
                     pass_ET.requestFocus();
                     return;
                 }
-                ProgressBar progressBar=findViewById(R.id.log_in_progress);
+                ProgressBar progressBar = findViewById(R.id.log_in_progress);
                 progressBar.setVisibility(View.VISIBLE);
-                firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
-                        startActivity(new Intent(Log_in_Activity.this,MainActivity.class));
-                        finish();
-                        }else {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(Log_in_Activity.this, MainActivity.class));
+                            finish();
+                        } else {
                             Toast.makeText(Log_in_Activity.this, "having Problem", Toast.LENGTH_SHORT).show();
                         }
                     }

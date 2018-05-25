@@ -25,24 +25,25 @@ public class List_Event_F extends Fragment {
     TextView add_event_TV;
     ListView add_event_list;
     ArrayList<String> name;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         getActivity().setTitle("Event List");
-        return inflater.inflate(R.layout.list_event_f,null);
+        return inflater.inflate(R.layout.list_event_f, null);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        add_event_TV =view.findViewById(R.id.add_event);
-        add_event_list=view.findViewById(R.id.event_list);
+        add_event_TV = view.findViewById(R.id.add_event);
+        add_event_list = view.findViewById(R.id.event_list);
 
-        name=new ArrayList<>();
+        name = new ArrayList<>();
 
-        if (!name.isEmpty()){
+        if (!name.isEmpty()) {
             add_event_TV.setVisibility(View.GONE);
         }
 
@@ -67,7 +68,6 @@ public class List_Event_F extends Fragment {
 
 //        dialogView = inflater.inflate(R.layout.customdialogwithinput, null);
 //        dialogBuilder.setView(dialogView);
-
 
 
 //        circleImageView = (CircleImageView) dialogView.findViewById(R.id.circle_image_view);

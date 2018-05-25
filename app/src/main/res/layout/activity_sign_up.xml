@@ -5,117 +5,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="#437479"
+    android:fillViewport="true"
     >
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#437479"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context="com.example.imransk.bitmproject.Activity.SignUpActivity">
-
-    <ProgressBar
-        android:id="@+id/sign_up_progress"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content"/>
     <LinearLayout
-        android:id="@+id/name_linear"
+
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:background="#437479"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        tools:context="com.example.imransk.bitmproject.Activity.SignUpActivity">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50sp"
-            android:layout_marginRight="5sp"
-            android:layout_weight=".3"
-            android:background="#FFF"
+        <ProgressBar
+            android:id="@+id/sign_up_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/name_linear"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:gravity="center"
-            android:padding="2sp"
-            android:text="Name :"
-            android:textColor="#000"/>
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/name_ET_register"
-            android:layout_width="0dp"
-            android:layout_height="50sp"
-            android:layout_weight="1"
-            android:background="#FFF"
-            android:paddingLeft="5sp"
-            android:textColor="#000"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".3"
+                android:background="#FFF"
+                android:gravity="center"
+                android:padding="2sp"
+                android:text="Name :"
+                android:textColor="#000"/>
 
-    <LinearLayout
-        android:id="@+id/email_linear"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+            <EditText
+                android:id="@+id/name_ET_register"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:paddingLeft="5sp"
+                android:textColor="#000"/>
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50sp"
-            android:layout_marginRight="5sp"
-            android:layout_weight=".3"
-            android:background="#FFF"
+        <LinearLayout
+            android:id="@+id/email_linear"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:gravity="center"
-            android:padding="2sp"
-            android:text="E-mail :"
-            android:textColor="#000"/>
+            android:orientation="horizontal">
 
-        <EditText
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".3"
+                android:background="#FFF"
+                android:gravity="center"
+                android:padding="2sp"
+                android:text="E-mail :"
+                android:textColor="#000"/>
 
-            android:id="@+id/email_ET_register"
-            android:layout_width="0dp"
-            android:layout_height="50sp"
-            android:layout_weight="1"
-            android:background="#FFF"
-            android:paddingLeft="5sp"
-            android:textColor="#000"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/pass_linear"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+            <EditText
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50sp"
-            android:layout_marginRight="5sp"
-            android:layout_weight=".3"
-            android:background="#FFF"
+                android:id="@+id/email_ET_register"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:paddingLeft="5sp"
+                android:textColor="#000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pass_linear"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:gravity="center"
-            android:padding="2sp"
-            android:text="Password :"
-            android:textColor="#000"/>
+            android:orientation="horizontal">
 
-        <EditText
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".3"
+                android:background="#FFF"
+                android:gravity="center"
+                android:padding="2sp"
+                android:text="Password :"
+                android:textColor="#000"/>
 
-            android:id="@+id/pass_ET_register"
-            android:layout_width="0dp"
-            android:layout_height="50sp"
-            android:layout_weight="1"
+            <EditText
+
+                android:id="@+id/pass_ET_register"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:paddingLeft="5sp"
+                android:textColor="#000"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="#FFF"
-            android:paddingLeft="5sp"
-            android:textColor="#000"/>
-    </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="25sp"
-        android:background="#FFF"
-        android:padding="10sp"
-        android:onClick="Sign_Up_Success"
-        android:textAllCaps="false"/>
+            android:onClick="Sign_Up_Success"
+            android:padding="10sp"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textSize="25sp"/>
 
-</LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

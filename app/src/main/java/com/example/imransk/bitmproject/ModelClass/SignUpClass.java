@@ -11,10 +11,10 @@ public class SignUpClass {
     String pass;
     String user_id;
 
-    public SignUpClass(String name, String email, String pass,String user_id) {
+    public SignUpClass(String name, String email, String pass, String user_id) {
         this.name = name;
         this.email = email;
         this.pass = pass;
-        this.user_id=user_id;
+        this.user_id = user_id;
     }
 }

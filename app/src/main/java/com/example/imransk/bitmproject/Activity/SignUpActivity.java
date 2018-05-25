@@ -77,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        ProgressBar progressBar=findViewById(R.id.sign_up_progress);
+        ProgressBar progressBar = findViewById(R.id.sign_up_progress);
         progressBar.setVisibility(View.VISIBLE);
 
         firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -88,9 +88,9 @@ public class SignUpActivity extends AppCompatActivity {
                     firebaseAuth = FirebaseAuth.getInstance();
                     firebaseUser = firebaseAuth.getCurrentUser();
 
-                    String user_id=firebaseUser.getUid().toString();
+                    String user_id = firebaseUser.getUid().toString();
 
-                    SignUpClass signUpClass = new SignUpClass(name, email, pass,user_id);
+                    SignUpClass signUpClass = new SignUpClass(name, email, pass, user_id);
                     databaseReference.child("User").child(user_id).setValue(signUpClass);
 
                     startActivity(new Intent(SignUpActivity.this, Log_in_Activity.class));

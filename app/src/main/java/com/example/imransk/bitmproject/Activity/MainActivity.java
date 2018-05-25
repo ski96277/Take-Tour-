@@ -21,7 +21,8 @@ import com.example.imransk.bitmproject.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Fragment fragment=null;
+    Fragment fragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +49,10 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Add default fragment on home page
-        fragment=new List_Event_F();
-        if (fragment!=null){
-            FragmentTransaction  fragmentTransaction=getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.screen_Area_main,fragment);
+        fragment = new List_Event_F();
+        if (fragment != null) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.screen_Area_main, fragment);
             fragmentTransaction.commit();
         }
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_event) {
 
-            fragment =new List_Event_F();
+            fragment = new List_Event_F();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -111,11 +112,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-        if (fragment!=null){
+        if (fragment != null) {
 
-            FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack("");
-            fragmentTransaction.replace(R.id.screen_Area_main,fragment);
+            fragmentTransaction.replace(R.id.screen_Area_main, fragment);
             fragmentTransaction.commit();
         }
 
