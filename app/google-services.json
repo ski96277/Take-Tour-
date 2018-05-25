@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "264707465744",
+    "firebase_url": "https://bitmproject-93a45.firebaseio.com",
+    "project_id": "bitmproject-93a45",
+    "storage_bucket": "bitmproject-93a45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264707465744:android:8dce0da1049bd629",
+        "android_client_info": {
+          "package_name": "com.example.imransk.bitmproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264707465744-3q327olfgbekgse99ukus967qkgmjihl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.imransk.bitmproject",
+            "certificate_hash": "cf93257cb8ba63692f323129202f8ddaf8412413"
+          }
+        },
+        {
+          "client_id": "264707465744-5llo9oaud381719oov4pap19ukvqcp52.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "264707465744-5llo9oaud381719oov4pap19ukvqcp52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArWLAkE780Di1isZeZv9BVTnD3G_OFQWY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264707465744-5llo9oaud381719oov4pap19ukvqcp52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
