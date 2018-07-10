@@ -66,7 +66,7 @@ public class Log_in_Activity extends AppCompatActivity {
                     pass_ET.requestFocus();
                     return;
                 }
-                ProgressBar progressBar = findViewById(R.id.log_in_progress);
+                final ProgressBar progressBar = findViewById(R.id.log_in_progress);
                 progressBar.setVisibility(View.VISIBLE);
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -74,8 +74,10 @@ public class Log_in_Activity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             startActivity(new Intent(Log_in_Activity.this, MainActivity.class));
+                            progressBar.setVisibility(View.GONE);
                             finish();
                         } else {
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(Log_in_Activity.this, "having Problem", Toast.LENGTH_SHORT).show();
                         }
                     }

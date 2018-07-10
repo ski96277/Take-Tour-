@@ -52,6 +52,6 @@
         android:background="#FFF"
         android:onClick="go_Register"
         android:padding="10sp"
-        android:text="have an account ? click here"
+        android:text="SignUp ? click here"
         android:textAllCaps="false"/>
 </LinearLayout>
