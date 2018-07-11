@@ -1,118 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#437479"
-              android:padding="5sp"
-    android:gravity="center">
+              android:background="#437479"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="5sp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:layout_height="wrap_content">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight=".5"
             android:layout_height="50sp"
-            android:textColor="#000"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:background="#FFF"
             android:layout_marginRight="5sp"
-            android:text="Place Name :" />
+            android:layout_weight=".5"
+            android:background="#FFF"
+            android:gravity="center"
+            android:text="Place Name :"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
         <EditText
             android:id="@+id/place_name_ET"
             android:layout_width="0dp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:background="#FFF"
             android:gravity="center"
-            android:layout_height="50sp"
             android:textSize="20sp"/>
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:layout_height="wrap_content">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight=".5"
             android:layout_height="50sp"
-            android:textColor="#000"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:background="#FFF"
             android:layout_marginRight="5sp"
-            android:text="Start Journey :" />
+            android:layout_weight=".5"
+            android:background="#FFF"
+            android:gravity="center"
+            android:text="Start Journey :"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
         <EditText
             android:id="@+id/start_jurney_Date_ET"
             android:layout_width="0dp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:background="#FFF"
-            android:gravity="center"
             android:focusable="false"
-            android:layout_height="50sp"
+            android:gravity="center"
             android:textSize="20sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:layout_height="wrap_content">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight=".5"
             android:layout_height="50sp"
-            android:textColor="#000"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:background="#FFF"
             android:layout_marginRight="5sp"
-            android:text="End Journey :" />
+            android:layout_weight=".5"
+            android:background="#FFF"
+            android:gravity="center"
+            android:text="End Journey :"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
         <EditText
             android:id="@+id/end_journey_date_ET"
             android:layout_width="0dp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:background="#FFF"
-            android:gravity="center"
             android:focusable="false"
-            android:layout_height="50sp"
+            android:gravity="center"
             android:textSize="20sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:layout_height="wrap_content">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight=".5"
             android:layout_height="50sp"
-            android:textColor="#000"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:background="#FFF"
             android:layout_marginRight="5sp"
-            android:text="Place image :" />
-        <Button
-            android:id="@+id/choose_image_btn"
+            android:layout_weight=".5"
+            android:background="#FFF"
+            android:gravity="center"
+            android:text="Budget"
+            android:textColor="#000"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/budjet_journey"
             android:layout_width="0dp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:background="#FFF"
-            android:text="Choose Image"
-            android:textAllCaps="false"
-            android:layout_height="50sp"
+            android:gravity="center"
+            android:inputType="number"
             android:textSize="20sp"/>
     </LinearLayout>
+
 
 </LinearLayout>

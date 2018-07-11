@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#437479"
+    android:fillViewport="true"
+    tools:context="com.example.imransk.bitmproject.Activity.AddEventActivity">
+
+
+    <LinearLayout
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#437479"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_marginTop="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".5"
+                android:background="#FFF"
+                android:gravity="center"
+                android:text="Place Name :"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/place_name_ET"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:gravity="center"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".5"
+                android:background="#FFF"
+                android:gravity="center"
+                android:text="Start Journey :"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/start_jurney_Date_ET"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:focusable="false"
+                android:gravity="center"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".5"
+                android:background="#FFF"
+                android:gravity="center"
+                android:text="End Journey :"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/end_journey_date_ET"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:focusable="false"
+                android:gravity="center"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight=".5"
+                android:background="#FFF"
+                android:gravity="center"
+                android:text="Budget"
+                android:textColor="#000"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/budjet_journey"
+                android:layout_width="0dp"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#FFF"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="70sp"
+                android:layout_marginTop="10sp"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textSize="25sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

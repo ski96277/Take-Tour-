@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imransk.bitmproject.ModelClass.Add_Event;
 import com.example.imransk.bitmproject.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -40,6 +46,25 @@ public class List_Event_F extends Fragment {
     ListView add_event_list;
     ArrayList<String> name;
     View context;
+
+    //Alert Diolag
+    TextView place_name_et;
+    TextView start_journey_date_et;
+    TextView end_journey_date_et;
+    TextView journey_budget_ET;
+
+
+    String place;
+    String start_Date;
+    String end_Date;
+    String budget;
+    String event_Create_Date;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    String user_ID;
 
 
     @Nullable
@@ -60,6 +85,13 @@ public class List_Event_F extends Fragment {
 
         name = new ArrayList<>();
 
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        databaseReference=firebaseDatabase.getReference();
+        user_ID = firebaseUser.getUid();
+
         if (!name.isEmpty()) {
             add_event_TV.setVisibility(View.GONE);
         }
@@ -70,14 +102,6 @@ public class List_Event_F extends Fragment {
                 Alert();
             }
         });
-
-
-    }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
 
     }
@@ -94,43 +118,11 @@ public class List_Event_F extends Fragment {
         dialogView = inflater.inflate(R.layout.customdialogwithinput, null);
         dialogBuilder.setView(dialogView);
 
-
-//        circleImageView = (CircleImageView) dialogView.findViewById(R.id.circle_image_view);
-
-
-        dialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-
-            }
-        });
-        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //pass
-            }
-        });
-        dialogBuilder.setCancelable(false);
-        dialogBuilder.create();
-
-        dialogBuilder.show();
-
-
-        TextView place_name_et;
-        final TextView start_journey_date_et;
-        final TextView end_journey_date_et;
-        final Button choose_image_btn;
-
-
         place_name_et = dialogView.findViewById(R.id.place_name_ET);
         start_journey_date_et = dialogView.findViewById(R.id.start_jurney_Date_ET);
         start_journey_date_et.setText("");
         end_journey_date_et = dialogView.findViewById(R.id.end_journey_date_ET);
-        choose_image_btn = (Button) dialogView.findViewById(R.id.choose_image_btn);
-        choose_image_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "hi", Toast.LENGTH_SHORT).show();
-            }
-        });
+        journey_budget_ET = dialogView.findViewById(R.id.budjet_journey);
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -147,7 +139,7 @@ public class List_Event_F extends Fragment {
 
                 String myFormat = "dd/MM/yy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                start_journey_date_et .setText(sdf.format(myCalendar.getTime()));
+                start_journey_date_et.setText(sdf.format(myCalendar.getTime()));
 
             }
 
@@ -166,7 +158,7 @@ public class List_Event_F extends Fragment {
 
                 String myFormat = "dd/MM/yy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                end_journey_date_et .setText(sdf.format(myCalendar.getTime()));
+                end_journey_date_et.setText(sdf.format(myCalendar.getTime()));
 
             }
 
@@ -181,9 +173,6 @@ public class List_Event_F extends Fragment {
                 new DatePickerDialog(getContext(), start_Journey_Date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-
-
-
             }
         });
         end_journey_date_et.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +185,54 @@ public class List_Event_F extends Fragment {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+
+        dialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //get Text From EditText Field
+                place = place_name_et.getText().toString();
+                start_Date = start_journey_date_et.getText().toString();
+                end_Date = end_journey_date_et.getText().toString();
+                budget = journey_budget_ET.getText().toString();
+                if (place.isEmpty()) {
+                    Toast.makeText(getContext(), "Place Name Can't empty", Toast.LENGTH_SHORT).show();
+                }
+                else if (start_Date.isEmpty()) {
+                    Toast.makeText(getContext(), "Date Can't empty", Toast.LENGTH_SHORT).show();
+
+                }
+                else if (end_Date.isEmpty()) {
+                    Toast.makeText(getContext(), "Date Can't empty", Toast.LENGTH_SHORT).show();
+
+                }
+                else if (budget.isEmpty()) {
+                    Toast.makeText(getContext(), "Budget an't empty", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    event_Create_Date=java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+                    Add_Event add_event=new Add_Event(place,start_Date,end_Date,budget,event_Create_Date);
+                    databaseReference.child("Event").child(user_ID).child(event_Create_Date).setValue(add_event);
+
+                    place_name_et.setText("");
+                    start_journey_date_et.setText("");
+                    end_journey_date_et.setText("");
+                    journey_budget_ET.setText("");
+                }
+                
+
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //pass
+            }
+        });
+        dialogBuilder.setCancelable(false);
+        dialogBuilder.create();
+
+        dialogBuilder.show();
+
 
     }
 
