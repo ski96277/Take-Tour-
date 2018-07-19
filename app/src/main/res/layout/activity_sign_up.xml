@@ -34,24 +34,26 @@
             android:orientation="horizontal">
 
             <TextView
+                android:background="@drawable/buttonshape"
                 android:layout_width="0dp"
                 android:layout_height="50sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight=".3"
-                android:background="#FFF"
                 android:gravity="center"
                 android:padding="2sp"
                 android:text="Name :"
-                android:textColor="#000"/>
+                android:textColor="#FFF"/>
 
             <EditText
                 android:id="@+id/name_ET_register"
                 android:layout_width="0dp"
                 android:layout_height="50sp"
                 android:layout_weight="1"
-                android:background="#FFF"
+                android:background="@drawable/buttonshape"
                 android:paddingLeft="5sp"
-                android:textColor="#000"/>
+                android:hint="Name"
+                android:textColorHint="#FFF"
+                android:textColor="#FFF"/>
         </LinearLayout>
 
         <LinearLayout
@@ -66,11 +68,11 @@
                 android:layout_height="50sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight=".3"
-                android:background="#FFF"
+                android:background="@drawable/buttonshape"
                 android:gravity="center"
                 android:padding="2sp"
                 android:text="E-mail :"
-                android:textColor="#000"/>
+                android:textColor="#FFF"/>
 
             <EditText
 
@@ -78,7 +80,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50sp"
                 android:layout_weight="1"
-                android:background="#FFF"
+                android:background="@drawable/buttonshape"
+                android:hint="e-mail"
+                android:textColorHint="#FFF"
                 android:paddingLeft="5sp"
                 android:textColor="#000"/>
         </LinearLayout>
@@ -95,11 +99,11 @@
                 android:layout_height="50sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight=".3"
-                android:background="#FFF"
                 android:gravity="center"
                 android:padding="2sp"
+                android:background="@drawable/buttonshape"
                 android:text="Password :"
-                android:textColor="#000"/>
+                android:textColor="#FFF"/>
 
             <EditText
 
@@ -107,19 +111,23 @@
                 android:layout_width="0dp"
                 android:layout_height="50sp"
                 android:layout_weight="1"
-                android:background="#FFF"
                 android:paddingLeft="5sp"
-                android:textColor="#000"/>
+                android:hint="password"
+                android:inputType="textPassword"
+                android:textColorHint="#FFF"
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFF"/>
         </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF"
             android:onClick="Sign_Up_Success"
             android:padding="10sp"
+            android:background="@drawable/buttonshape"
             android:text="Register"
             android:textAllCaps="false"
+            android:textColor="#FFF"
             android:textSize="25sp"/>
 
     </LinearLayout>

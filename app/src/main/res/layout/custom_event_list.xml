@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/Place_id_TV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Place"
+        android:textSize="25sp"
+        android:paddingLeft="15sp"/>
+
+    <TextView
+        android:id="@+id/budget_id_TV"
+        android:layout_width="0dp"
+        android:paddingLeft="15sp"
+        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Budget" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/start_date_id_TV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:text="start Date"
+            android:textSize="25sp"
+            android:paddingLeft="15sp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:text="-"
+            android:gravity="left"
+            android:textSize="25sp"
+            android:paddingLeft="15sp"/>
+
+        <TextView
+            android:id="@+id/end_date_id_TV"
+            android:layout_width="0dp"
+            android:paddingLeft="1dp"
+            android:textSize="25sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="end Date" />
+    </LinearLayout>
+
+</LinearLayout>

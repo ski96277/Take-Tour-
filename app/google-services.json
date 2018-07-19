@@ -23,8 +23,12 @@
           }
         },
         {
-          "client_id": "264707465744-5llo9oaud381719oov4pap19ukvqcp52.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "264707465744-9pg1rii8pceed977g3fcj6ubelc0apll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.imransk.bitmproject",
+            "certificate_hash": "cc128726cf5d10b29110795a522b0c8498976d04"
+          }
         },
         {
           "client_id": "264707465744-5llo9oaud381719oov4pap19ukvqcp52.apps.googleusercontent.com",

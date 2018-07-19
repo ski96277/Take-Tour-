@@ -1,6 +1,7 @@
 package com.example.imransk.bitmproject.Activity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -180,6 +181,7 @@ event_Create_Date=java.text.DateFormat.getDateTimeInstance().format(Calendar.get
         start_Journey_Date_ET.setText("");
         end_Journey_Date_ET.setText("");
         journey_budget_ET.setText("");
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
 
     }

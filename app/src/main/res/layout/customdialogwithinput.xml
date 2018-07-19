@@ -19,18 +19,19 @@
             android:layout_height="50sp"
             android:layout_marginRight="5sp"
             android:layout_weight=".5"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="Place Name :"
-            android:textColor="#000"
-            android:textSize="15sp"/>
+            android:textColor="#FFF"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/place_name_ET"
             android:layout_width="0dp"
             android:layout_height="50sp"
             android:layout_weight="1"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
+            android:textColor="#FFF"
             android:gravity="center"
             android:textSize="20sp"/>
     </LinearLayout>
@@ -48,10 +49,10 @@
             android:layout_height="50sp"
             android:layout_marginRight="5sp"
             android:layout_weight=".5"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="Start Journey :"
-            android:textColor="#000"
+            android:textColor="#FFF"
             android:textSize="15sp"/>
 
         <EditText
@@ -59,7 +60,8 @@
             android:layout_width="0dp"
             android:layout_height="50sp"
             android:layout_weight="1"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
+            android:textColor="#FFF"
             android:focusable="false"
             android:gravity="center"
             android:textSize="20sp"/>
@@ -77,10 +79,10 @@
             android:layout_height="50sp"
             android:layout_marginRight="5sp"
             android:layout_weight=".5"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="End Journey :"
-            android:textColor="#000"
+            android:textColor="#FFF"
             android:textSize="15sp"/>
 
         <EditText
@@ -88,7 +90,8 @@
             android:layout_width="0dp"
             android:layout_height="50sp"
             android:layout_weight="1"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
+            android:textColor="#FFF"
             android:focusable="false"
             android:gravity="center"
             android:textSize="20sp"/>
@@ -106,10 +109,10 @@
             android:layout_height="50sp"
             android:layout_marginRight="5sp"
             android:layout_weight=".5"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="Budget"
-            android:textColor="#000"
+            android:textColor="#FFF"
             android:textSize="15sp"/>
 
         <EditText
@@ -117,7 +120,8 @@
             android:layout_width="0dp"
             android:layout_height="50sp"
             android:layout_weight="1"
-            android:background="#FFF"
+            android:background="@drawable/buttonshape"
+            android:textColor="#FFF"
             android:gravity="center"
             android:inputType="number"
             android:textSize="20sp"/>
