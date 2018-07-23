@@ -1,7 +1,11 @@
 package com.example.imransk.bitmproject.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +14,7 @@ import android.widget.QuickContactBadge;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imransk.bitmproject.Fragment.Event_Details;
 import com.example.imransk.bitmproject.ModelClass.Add_Event;
 import com.example.imransk.bitmproject.R;
 
@@ -48,7 +53,7 @@ public class Event_List_Adapter extends BaseAdapter {
 
         View event_item_list=layoutInflater.inflate(R.layout.custom_event_list,null);
         TextView place=event_item_list.findViewById(R.id.Place_id_TV);
-        TextView budget=event_item_list.findViewById(R.id.budget_id_TV);
+        final TextView budget=event_item_list.findViewById(R.id.budget_id_TV);
         TextView start_date=event_item_list.findViewById(R.id.start_date_id_TV);
         TextView end_date=event_item_list.findViewById(R.id.end_date_id_TV);
 
@@ -61,7 +66,21 @@ public class Event_List_Adapter extends BaseAdapter {
         event_item_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, ""+i, Toast.LENGTH_SHORT).show();
+
+                Bundle bundle=new Bundle();
+                bundle.putString("place",add_event.getPlace());
+                bundle.putString("budget",add_event.getBudget());
+                bundle.putString("st_Date",add_event.getStart_Date());
+                bundle.putString("end_Date",add_event.getEnd_Date());
+                bundle.putString("event_create_date",add_event.getEvent_Create_Date());
+                Fragment fragment=new Event_Details();
+                if (fragment!=null){
+                    FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.screen_Area_main, fragment);
+                    fragmentTransaction.addToBackStack("");
+                    fragment.setArguments(bundle);
+                    fragmentTransaction.commit();
+                }
             }
         });
         return event_item_list;

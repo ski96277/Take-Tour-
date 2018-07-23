@@ -50,7 +50,7 @@ public class List_Event_F extends Fragment {
 
     TextView add_event_TV;
     ListView add_event_list;
-    private ArrayList<Add_Event> add_event_pojo = null;
+    private ArrayList<Add_Event> add_event_pojo ;
     View context;
 
     //Alert Diolag
