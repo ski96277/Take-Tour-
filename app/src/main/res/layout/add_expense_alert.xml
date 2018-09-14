@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Add new Expense"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/expense_Title_ID_ET"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="10sp"
+        android:background="@drawable/buttonshape"
+        android:gravity="center"
+        android:hint="Expense title"
+
+        android:textColor="@color/text_color"
+        android:textColorHint="#a79d9d"
+        android:textSize="20sp" />
+
+
+    <EditText
+        android:id="@+id/expense_Tk_ID_ET"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="10sp"
+        android:background="@drawable/buttonshape"
+        android:gravity="center"
+        android:hint="Expense Tk"
+        android:inputType="numberDecimal"
+
+        android:textColor="@color/text_color"
+        android:textColorHint="#a79d9d"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp">
+
+        <Button
+            android:id="@+id/cancel_ID_btn"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:text="Cancel"
+            android:textAllCaps="false"
+
+            android:textColor="@color/text_color"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/submit_ID_btn"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/buttonshape"
+            android:text="Submit"
+            android:textAllCaps="false"
+
+            android:textColor="@color/text_color"
+            android:textSize="25sp" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/current_weather_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5sp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:text="Current Weather"
+            android:textAllCaps="false"
+
+            android:textColor="@color/text_color"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/forecast_weather_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:text="Forecast"
+            android:textAllCaps="false"
+
+            android:textColor="@color/text_color"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <ListView
+            android:id="@+id/forecast_weather_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/address_ID_TV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:text="city name"
+        android:textSize="25sp"/>
+
+        <ImageView
+            android:id="@+id/temp_icon_image_View"
+            android:layout_width="150sp"
+            android:layout_height="100sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10sp" />
+
+        <TextView
+            android:id="@+id/current_tempture_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:text="Temp : 00° C"
+
+            android:textColor="@color/text_color"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/current_tempture_MIN_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:text="Max Temp : 00° C"
+
+            android:textColor="@color/text_color"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/current_tempture_Max_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:text="Min Temp : 00° C"
+
+            android:textColor="@color/text_color"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

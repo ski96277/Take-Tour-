@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#437479"
+              android:background="@color/background"
               android:gravity="center"
               android:orientation="vertical"
               android:padding="5sp">
@@ -22,7 +22,7 @@
             android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="Place Name :"
-            android:textColor="#FFF"
+            android:textColor="@color/text_color"
             android:textSize="15sp" />
 
         <EditText
@@ -31,7 +31,8 @@
             android:layout_height="50sp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
-            android:textColor="#FFF"
+
+            android:textColor="@color/text_color"
             android:gravity="center"
             android:textSize="20sp"/>
     </LinearLayout>
@@ -52,7 +53,8 @@
             android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="Start Journey :"
-            android:textColor="#FFF"
+
+            android:textColor="@color/text_color"
             android:textSize="15sp"/>
 
         <EditText
@@ -61,7 +63,8 @@
             android:layout_height="50sp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
-            android:textColor="#FFF"
+
+            android:textColor="@color/text_color"
             android:focusable="false"
             android:gravity="center"
             android:textSize="20sp"/>
@@ -82,7 +85,7 @@
             android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="End Journey :"
-            android:textColor="#FFF"
+            android:textColor="@color/text_color"
             android:textSize="15sp"/>
 
         <EditText
@@ -91,7 +94,8 @@
             android:layout_height="50sp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
-            android:textColor="#FFF"
+
+            android:textColor="@color/text_color"
             android:focusable="false"
             android:gravity="center"
             android:textSize="20sp"/>
@@ -112,7 +116,7 @@
             android:background="@drawable/buttonshape"
             android:gravity="center"
             android:text="Budget"
-            android:textColor="#FFF"
+            android:textColor="@color/text_color"
             android:textSize="15sp"/>
 
         <EditText
@@ -121,7 +125,8 @@
             android:layout_height="50sp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
-            android:textColor="#FFF"
+
+            android:textColor="@color/text_color"
             android:gravity="center"
             android:inputType="number"
             android:textSize="20sp"/>

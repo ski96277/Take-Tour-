@@ -5,22 +5,29 @@ package com.example.imransk.bitmproject.ModelClass;
  */
 
 public class Add_Event {
-    String place="";
-    String start_Date="";
-    String end_Date="";
-    String budget="";
-    String event_Create_Date="";
+    String place = "";
+    String start_Date = "";
+    String end_Date = "";
+    String budget = "";
+    String event_Create_Date = "";
+    String event_type = "";
 
     public Add_Event() {
 
     }
 
-    public Add_Event(String place, String start_Date, String end_Date, String budget, String event_Create_Date) {
+    public Add_Event(String place, String start_Date, String end_Date, String budget, String event_Create_Date,
+                     String event_type) {
         this.place = place;
         this.start_Date = start_Date;
         this.end_Date = end_Date;
         this.budget = budget;
-        this.event_Create_Date=event_Create_Date;
+        this.event_Create_Date = event_Create_Date;
+        this.event_type=event_type;
+    }
+
+    public String getEvent_type() {
+        return event_type;
     }
 
     public String getPlace() {

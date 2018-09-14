@@ -3,7 +3,7 @@
 
     <corners android:radius="17dp"/>
     <gradient
-        android:endColor="#000"
+        android:endColor="#fdfdfd"
 
         />
     <size android:height="40dp"

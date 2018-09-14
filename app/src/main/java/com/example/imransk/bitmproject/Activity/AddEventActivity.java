@@ -44,20 +44,21 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
     String end_Date;
     String budget;
     String event_Create_Date;
+    String event_type;
 
     final Calendar myCalendar = Calendar.getInstance();
-     DatePickerDialog.OnDateSetListener start_Journey_Date;
-     DatePickerDialog.OnDateSetListener end_Journey_Date;
+    DatePickerDialog.OnDateSetListener start_Journey_Date;
+    DatePickerDialog.OnDateSetListener end_Journey_Date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
-        place_name_ET=findViewById(R.id.place_name_ET);
-        start_Journey_Date_ET=findViewById(R.id.start_jurney_Date_ET);
-        end_Journey_Date_ET=findViewById(R.id.end_journey_date_ET);
-        journey_budget_ET=findViewById(R.id.budjet_journey);
+        place_name_ET = findViewById(R.id.place_name_ET);
+        start_Journey_Date_ET = findViewById(R.id.start_jurney_Date_ET);
+        end_Journey_Date_ET = findViewById(R.id.end_journey_date_ET);
+        journey_budget_ET = findViewById(R.id.budjet_journey);
 
         //set Date From Date picker
         PickDateForStartJourney();
@@ -82,20 +83,20 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 //End date picker work
-        submit_btn=findViewById(R.id.submit_button);
+        submit_btn = findViewById(R.id.submit_button);
         submit_btn.setOnClickListener(this);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
-        firebaseDatabase=FirebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
         user_ID = firebaseUser.getUid();
 
 
     }
 
     private void PickDateForEndJourney() {
-         end_Journey_Date = new DatePickerDialog.OnDateSetListener() {
+        end_Journey_Date = new DatePickerDialog.OnDateSetListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -117,7 +118,7 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
 
     private void PickDateForStartJourney() {
 
-         start_Journey_Date = new DatePickerDialog.OnDateSetListener() {
+        start_Journey_Date = new DatePickerDialog.OnDateSetListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -143,45 +144,45 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
 
         //get Text From EditText Field
-        place=place_name_ET.getText().toString();
-        start_Date=start_Journey_Date_ET.getText().toString();
-        end_Date=end_Journey_Date_ET.getText().toString();
-        budget=journey_budget_ET.getText().toString();
+        place = place_name_ET.getText().toString();
+        start_Date = start_Journey_Date_ET.getText().toString();
+        end_Date = end_Journey_Date_ET.getText().toString();
+        budget = journey_budget_ET.getText().toString();
 
 
-        if (TextUtils.isEmpty(place)){
+        if (TextUtils.isEmpty(place)) {
             place_name_ET.setError("Place Name");
             place_name_ET.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(start_Date)){
+        if (TextUtils.isEmpty(start_Date)) {
             start_Journey_Date_ET.setError("Place Name");
             start_Journey_Date_ET.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(end_Date)){
+        if (TextUtils.isEmpty(end_Date)) {
             end_Journey_Date_ET.setError("Place Name");
             end_Journey_Date_ET.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(budget)){
+        if (TextUtils.isEmpty(budget)) {
             journey_budget_ET.setError("Place Name");
             journey_budget_ET.requestFocus();
             return;
         }
 
 
-event_Create_Date=java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+        event_Create_Date = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+        event_type= "information";
+        Add_Event add_event = new Add_Event(place, start_Date, end_Date, budget, event_Create_Date,event_type);
 
-        Add_Event add_event=new Add_Event(place,start_Date,end_Date,budget,event_Create_Date);
-
-        databaseReference.child("Event").child(user_ID).child(event_Create_Date).setValue(add_event);
+        databaseReference.child("Event").child(user_ID).child(event_Create_Date).child("details").child(event_type).setValue(add_event);
 
         place_name_ET.setText("");
         start_Journey_Date_ET.setText("");
         end_Journey_Date_ET.setText("");
         journey_budget_ET.setText("");
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
 
     }

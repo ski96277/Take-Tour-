@@ -73,6 +73,7 @@ public class Event_List_Adapter extends BaseAdapter {
                 bundle.putString("st_Date",add_event.getStart_Date());
                 bundle.putString("end_Date",add_event.getEnd_Date());
                 bundle.putString("event_create_date",add_event.getEvent_Create_Date());
+                bundle.putString("event_type",add_event.getEvent_type());
                 Fragment fragment=new Event_Details();
                 if (fragment!=null){
                     FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();

@@ -10,9 +10,9 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Event"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_Weather"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
+            android:title="Weather"/>
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"

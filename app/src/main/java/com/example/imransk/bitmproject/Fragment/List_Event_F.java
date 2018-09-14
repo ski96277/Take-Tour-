@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
@@ -65,6 +66,7 @@ public class List_Event_F extends Fragment {
     String end_Date;
     String budget;
     String event_Create_Date;
+    String event_type = "information";
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -74,7 +76,8 @@ public class List_Event_F extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         getActivity().setTitle("Event List");
         return inflater.inflate(R.layout.list_event_f, null);
@@ -97,8 +100,6 @@ public class List_Event_F extends Fragment {
         databaseReference = firebaseDatabase.getReference();
         user_ID = firebaseUser.getUid();
 
-
-        Log.e(". . . .. .", "onViewCreated: "+"start it .   . .. . ." );
         databaseReference.addValueEventListener(new ValueEventListener() {
              Add_Event add_event = null;
 
@@ -106,14 +107,42 @@ public class List_Event_F extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 add_event_pojo.clear();
                 for (DataSnapshot snapshot : dataSnapshot.child("Event").child(user_ID).getChildren()) {
-                    add_event =snapshot.getValue(Add_Event.class);
-                    add_event_pojo.add(add_event);
-                    Log.e("TAG", "onDataChange: "+add_event.getPlace() );
+
+                   final String date=snapshot.getKey();
+                    Log.e("-- -- - - -- ", "------  "+date );
+//                    Log.e("-- -- - - -- ", "------  "+snapshot.child(date).child("information").child());
+
+                    DatabaseReference databaseReference;
+                    databaseReference=FirebaseDatabase.getInstance().getReference();
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot snapshot1:dataSnapshot.child("Event").child(user_ID).child(date).child("details").getChildren()){
+                                add_event =snapshot1.getValue(Add_Event.class);
+                                add_event_pojo.add(add_event);
+                                Log.e("TAG", "Place : "+add_event.getPlace() );
+                                Log.e("TAG", "budget: "+add_event.getBudget() );
+                                Log.e("TAG", "event type: "+add_event.getEvent_type() );
+                                Log.e("TAG", "start date: "+add_event.getStart_Date());
+                                Log.e("TAG", "end date: "+add_event.getEnd_Date() );
+                                Log.e("TAG", "event create date: "+add_event.getEvent_Create_Date() );
+                            }
+
 //if name is not empty gone add event button
-                    if (!add_event_pojo.isEmpty()) {
-                        add_event_TV.setVisibility(View.GONE);
-                        add_event_list.setVisibility(View.VISIBLE);
-                    }
+                            if (!add_event_pojo.isEmpty()) {
+                                add_event_TV.setVisibility(View.GONE);
+                                add_event_list.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
                 }
                 if (getActivity()!=null){
                     Event_List_Adapter event_list_adapter=new Event_List_Adapter(getActivity(),add_event_pojo);
@@ -241,8 +270,8 @@ public class List_Event_F extends Fragment {
                 } else {
                     event_Create_Date = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
-                    Add_Event add_event = new Add_Event(place, start_Date, end_Date, budget, event_Create_Date);
-                    databaseReference.child("Event").child(user_ID).child(event_Create_Date).setValue(add_event);
+                    Add_Event add_event = new Add_Event(place, start_Date, end_Date, budget, event_Create_Date,event_type);
+                    databaseReference.child("Event").child(user_ID).child(event_Create_Date).child("details").child(event_type).setValue(add_event);
 
                     place_name_et.setText("");
                     start_journey_date_et.setText("");

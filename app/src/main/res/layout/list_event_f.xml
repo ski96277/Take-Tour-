@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#437479"
+              android:background="@color/background"
               android:orientation="vertical">
 
     <TextView
@@ -11,7 +11,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Add event"/>
+        android:textSize="35sp"
+        android:textColor="@color/text_color"
+        android:text="Add Event"/>
 
     <ListView
         android:id="@+id/event_list"

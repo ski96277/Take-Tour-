@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imransk.bitmproject.Fragment.Current_Weather_F;
 import com.example.imransk.bitmproject.Fragment.List_Event_F;
 import com.example.imransk.bitmproject.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -124,6 +126,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        /*
+        MenuItem ase=menu.findItem(R.id.action_search);
+        ase.setVisible(true);*/
         return true;
     }
 
@@ -136,6 +141,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -154,7 +160,9 @@ public class MainActivity extends AppCompatActivity
 
             fragment = new List_Event_F();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_Weather) {
+            fragment=new Current_Weather_F();
+            Toast.makeText(this, "weather", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_slideshow) {
 
