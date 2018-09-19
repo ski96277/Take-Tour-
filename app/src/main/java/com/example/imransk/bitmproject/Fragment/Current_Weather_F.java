@@ -1,6 +1,7 @@
 package com.example.imransk.bitmproject.Fragment;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,16 +22,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.imransk.bitmproject.Activity.Add_ForeCast_Adapter;
+import com.example.imransk.bitmproject.Adapter.Add_ForeCast_Adapter;
 import com.example.imransk.bitmproject.Api.Weather_Service;
 import com.example.imransk.bitmproject.ModelClass.ForeCast_Weather_Response;
 import com.example.imransk.bitmproject.ModelClass.Weather_Response;
 import com.example.imransk.bitmproject.R;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -40,6 +46,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class Current_Weather_F extends Fragment {
@@ -55,6 +63,7 @@ public class Current_Weather_F extends Fragment {
     TextView address_TV;
 
     ListView forecast_Weather_listView;
+    ListView forecast_Weather_listView_search_place;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
@@ -65,13 +74,15 @@ public class Current_Weather_F extends Fragment {
     String countryName = "";
 
     public static String BASE_URL = "http://api.openweathermap.org/data/2.5/";
-    public static String BASE_URL_FORECAST = "https://samples.openweathermap.org/data/2.5/";
+    public static String BASE_URL_FORECAST = "https://api.openweathermap.org/data/2.5/";
     public double latitude;
     private double longitude;
     private String units = "metric";
     private String units2 = "Imperial";
 
-    String weather_app_id = "ab1f919d021e76086bbdf2761777438d";
+    int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
+
+    String weather_app_id = "d0b941339d6f075686460c7fe0912041";
 
     String stringUrl;
 
@@ -199,7 +210,7 @@ public class Current_Weather_F extends Fragment {
 
         locationRequest = new LocationRequest()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(10000)//After 10 second
+                .setInterval(1000)//After 10 second
                 .setFastestInterval(500); //processing time
 
         locationCallback = new LocationCallback() {
@@ -260,6 +271,7 @@ public class Current_Weather_F extends Fragment {
         max_Temp_TV = view.findViewById(R.id.current_tempture_Max_TV);
         min_Temp_TV = view.findViewById(R.id.current_tempture_MIN_TV);
         forecast_Weather_listView = view.findViewById(R.id.forecast_weather_list);
+        forecast_Weather_listView_search_place = view.findViewById(R.id.forecast_weather_list_from_search_place);
         address_TV = view.findViewById(R.id.address_ID_TV);
 //initial geocoder
         geocoder = new Geocoder(getContext());
@@ -317,16 +329,56 @@ public class Current_Weather_F extends Fragment {
         Weather_Service weather_service = retrofit.create(Weather_Service.class);
         final Call<ForeCast_Weather_Response> weather_responseCall = weather_service.getAllWeather_foreCast(stringUrl);
 
+
         weather_responseCall.enqueue(new Callback<ForeCast_Weather_Response>() {
             @Override
             public void onResponse(Call<ForeCast_Weather_Response> call, Response<ForeCast_Weather_Response> response) {
                 if (response.code() == 200) {
-                    ForeCast_Weather_Response example = response.body();
+                    ForeCast_Weather_Response foreCastWeatherResponse = response.body();
 
                     if (getContext() != null) {
 
-                        Add_ForeCast_Adapter foreCast_adapter = new Add_ForeCast_Adapter(getActivity(), example.getList(), example.getCity());
+                        Add_ForeCast_Adapter foreCast_adapter = new Add_ForeCast_Adapter(getActivity(), foreCastWeatherResponse.getList(), foreCastWeatherResponse.getCity());
                         forecast_Weather_listView.setAdapter(foreCast_adapter);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ForeCast_Weather_Response> call, Throwable t) {
+
+            }
+        });
+
+// End Call retrofit and save value to textView
+    }
+
+    public void get_weather_Information_ForeCast_search_Place(String stringUrl) {
+
+
+//call retrofit and save value to textView
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL_FORECAST)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Weather_Service weather_service = retrofit.create(Weather_Service.class);
+        final Call<ForeCast_Weather_Response> weather_responseCall = weather_service.getAllWeather_foreCast(stringUrl);
+
+        Log.e(TAG, "get_weather_Information_ForeCast_search_Place: "+stringUrl );
+
+        weather_responseCall.enqueue(new Callback<ForeCast_Weather_Response>() {
+            @Override
+            public void onResponse(Call<ForeCast_Weather_Response> call, Response<ForeCast_Weather_Response> response) {
+                if (response.code() == 200) {
+                    ForeCast_Weather_Response foreCastWeatherResponse = response.body();
+
+                    if (getContext() != null) {
+
+                        Add_ForeCast_Adapter foreCast_adapter = new Add_ForeCast_Adapter(getActivity(), foreCastWeatherResponse.getList(), foreCastWeatherResponse.getCity());
+                        forecast_Weather_listView.setVisibility(View.GONE);
+                        forecast_Weather_listView_search_place.setVisibility(View.VISIBLE);
+                        forecast_Weather_listView_search_place.setAdapter(foreCast_adapter);
                     }
                 }
             }
@@ -360,7 +412,45 @@ public class Current_Weather_F extends Fragment {
     }
 
     private void searchLocation() {
-        Toast.makeText(getContext(), "search the location", Toast.LENGTH_SHORT).show();
+        try {
+            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY).build(getActivity());
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e(TAG, "onActivityResult: ok******" );
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getContext(), data);
+                latitude = place.getLatLng().latitude;
+                longitude = place.getLatLng().longitude;
+
+//get complete weather url
+                stringUrl = String.format("forecast/daily?lat=%f&lon=%f&cnt=10&appid=%s", latitude, longitude, weather_app_id);
+
+                Log.e(TAG, "onActivityResult: "+stringUrl );
+
+                get_weather_Information_ForeCast_search_Place(stringUrl);
+            }
+        }
+
+       /* if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE && resultCode == RESULT_OK) {
+
+            Place place = PlaceAutocomplete.getPlace(getContext(),data);
+
+            LatLng latLng = place.getLatLng();
+            Double lat = latLng.latitude;
+            Double lon = latLng.longitude;
+            Toast.makeText(getContext(), ""+lat, Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "onActivityResult: "+lat );
+        }*/
+    }
 }

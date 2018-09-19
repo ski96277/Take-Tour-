@@ -1,4 +1,4 @@
-package com.example.imransk.bitmproject.Activity;
+package com.example.imransk.bitmproject.Adapter;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;

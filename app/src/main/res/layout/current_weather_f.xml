@@ -50,6 +50,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"/>
+        <ListView
+            android:id="@+id/forecast_weather_list_from_search_place"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
     <TextView
         android:gravity="center"
         android:id="@+id/address_ID_TV"

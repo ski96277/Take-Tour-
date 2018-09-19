@@ -5,21 +5,29 @@ import com.google.gson.annotations.SerializedName;
 
 public class ForeCast_Weather_Response {
 
+    @SerializedName("city")
+    @Expose
+    private City city;
     @SerializedName("cod")
     @Expose
     private String cod;
     @SerializedName("message")
     @Expose
-    private Integer message;
-    @SerializedName("city")
-    @Expose
-    private City city;
+    private Double message;
     @SerializedName("cnt")
     @Expose
     private Integer cnt;
     @SerializedName("list")
     @Expose
     private java.util.List<List> list = null;
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     public String getCod() {
         return cod;
@@ -29,20 +37,12 @@ public class ForeCast_Weather_Response {
         this.cod = cod;
     }
 
-    public Integer getMessage() {
+    public Double getMessage() {
         return message;
     }
 
-    public void setMessage(Integer message) {
+    public void setMessage(Double message) {
         this.message = message;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     public Integer getCnt() {
@@ -60,40 +60,30 @@ public class ForeCast_Weather_Response {
     public void setList(java.util.List<List> list) {
         this.list = list;
     }
-
     public class City {
 
-        @SerializedName("geoname_id")
+        @SerializedName("id")
         @Expose
-        private Integer geonameId;
+        private Integer id;
         @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("lat")
+        @SerializedName("coord")
         @Expose
-        private Double lat;
-        @SerializedName("lon")
-        @Expose
-        private Double lon;
+        private Coord coord;
         @SerializedName("country")
         @Expose
         private String country;
-        @SerializedName("iso2")
-        @Expose
-        private String iso2;
-        @SerializedName("type")
-        @Expose
-        private String type;
         @SerializedName("population")
         @Expose
         private Integer population;
 
-        public Integer getGeonameId() {
-            return geonameId;
+        public Integer getId() {
+            return id;
         }
 
-        public void setGeonameId(Integer geonameId) {
-            this.geonameId = geonameId;
+        public void setId(Integer id) {
+            this.id = id;
         }
 
         public String getName() {
@@ -104,20 +94,12 @@ public class ForeCast_Weather_Response {
             this.name = name;
         }
 
-        public Double getLat() {
-            return lat;
+        public Coord getCoord() {
+            return coord;
         }
 
-        public void setLat(Double lat) {
-            this.lat = lat;
-        }
-
-        public Double getLon() {
-            return lon;
-        }
-
-        public void setLon(Double lon) {
-            this.lon = lon;
+        public void setCoord(Coord coord) {
+            this.coord = coord;
         }
 
         public String getCountry() {
@@ -128,28 +110,39 @@ public class ForeCast_Weather_Response {
             this.country = country;
         }
 
-        public String getIso2() {
-            return iso2;
-        }
-
-        public void setIso2(String iso2) {
-            this.iso2 = iso2;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
         public Integer getPopulation() {
             return population;
         }
 
         public void setPopulation(Integer population) {
             this.population = population;
+        }
+
+    }
+
+    public class Coord {
+
+        @SerializedName("lon")
+        @Expose
+        private Double lon;
+        @SerializedName("lat")
+        @Expose
+        private Double lat;
+
+        public Double getLon() {
+            return lon;
+        }
+
+        public void setLon(Double lon) {
+            this.lon = lon;
+        }
+
+        public Double getLat() {
+            return lat;
+        }
+
+        public void setLat(Double lat) {
+            this.lat = lat;
         }
 
     }
@@ -182,9 +175,6 @@ public class ForeCast_Weather_Response {
         @SerializedName("rain")
         @Expose
         private Double rain;
-        @SerializedName("snow")
-        @Expose
-        private Double snow;
 
         public Integer getDt() {
             return dt;
@@ -258,14 +248,6 @@ public class ForeCast_Weather_Response {
             this.rain = rain;
         }
 
-        public Double getSnow() {
-            return snow;
-        }
-
-        public void setSnow(Double snow) {
-            this.snow = snow;
-        }
-
     }
     public class Temp {
 
@@ -337,6 +319,7 @@ public class ForeCast_Weather_Response {
         }
 
     }
+
     public class Weather {
 
         @SerializedName("id")
