@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/likelyhoodPlace_ID"
+        android:icon="@drawable/placeholder"
+        android:title="Likelihood Place"
+        />
+
+    <item
+        android:id="@+id/bank_ID"
+        android:icon="@drawable/bank"
+        android:title="Bank" />
+    <item
+        android:id="@+id/resturent_ID"
+        android:icon="@drawable/diet"
+        android:title="Resturent" />
+</menu>

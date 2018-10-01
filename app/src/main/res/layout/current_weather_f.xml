@@ -49,20 +49,28 @@
             android:id="@+id/forecast_weather_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:visibility="gone" />
+
         <ListView
             android:id="@+id/forecast_weather_list_from_search_place"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
-    <TextView
-        android:gravity="center"
-        android:id="@+id/address_ID_TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_color"
-        android:text="city name"
-        android:textSize="25sp"/>
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/address_ID_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="city name"
+            android:textColor="@color/text_color"
+            android:textSize="25sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <ImageView
             android:id="@+id/temp_icon_image_View"

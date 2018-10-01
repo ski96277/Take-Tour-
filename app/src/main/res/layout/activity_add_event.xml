@@ -38,7 +38,7 @@
                 android:gravity="center"
                 android:text="Place Name :"
                 android:textColor="@color/text_color"
-                android:textSize="15sp"/>
+                android:textSize="20sp"/>
 
             <EditText
                 android:id="@+id/place_name_ET"
@@ -68,7 +68,7 @@
                 android:gravity="center"
                 android:text="Start Journey :"
                 android:textColor="@color/text_color"
-                android:textSize="15sp"/>
+                android:textSize="17sp"/>
 
             <EditText
                 android:id="@+id/start_jurney_Date_ET"
@@ -97,7 +97,7 @@
                 android:background="@drawable/buttonshape"
                 android:gravity="center"
                 android:text="End Journey :"
-
+android:textSize="17sp"
                 android:textColor="@color/text_color"  />              android:textSize="15sp"/>
 
             <EditText
@@ -128,7 +128,7 @@
                 android:gravity="center"
                 android:text="Budget"
                 android:textColor="@color/text_color"
-                android:textSize="15sp"/>
+                android:textSize="20sp"/>
 
             <EditText
                 android:id="@+id/budjet_journey"

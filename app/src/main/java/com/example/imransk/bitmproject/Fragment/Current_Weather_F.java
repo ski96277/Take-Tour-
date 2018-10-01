@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.app.Activity.RESULT_OK;
 
 
-public class Current_Weather_F extends Fragment {
+public class Current_Weather_F extends Fragment implements View.OnClickListener {
 
     String TAG = "current weather";
 
@@ -61,6 +62,7 @@ public class Current_Weather_F extends Fragment {
     Button current_Btn;
     Button forecast_Btn;
     TextView address_TV;
+    ProgressBar progressBar;
 
     ListView forecast_Weather_listView;
     ListView forecast_Weather_listView_search_place;
@@ -105,45 +107,11 @@ public class Current_Weather_F extends Fragment {
         initialize();
         getMyLocation_And_Geocoder_Address();
 
-
-        current_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //set the menu action Visible
-                setHasOptionsMenu(false);
-
-                forecast_Weather_listView.setVisibility(View.GONE);
-
-                icon_image_View.setVisibility(View.VISIBLE);
-                current_Temp_TV.setVisibility(View.VISIBLE);
-                max_Temp_TV.setVisibility(View.VISIBLE);
-                min_Temp_TV.setVisibility(View.VISIBLE);
-                address_TV.setVisibility(View.VISIBLE);
-            }
-        });
-        forecast_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                //set the menu action Visible
-                setHasOptionsMenu(true);
-
-                forecast_Weather_listView.setVisibility(View.VISIBLE);
-
-                getMyLocation_And_Geocoder_Address_Forecast();
-
-                icon_image_View.setVisibility(View.GONE);
-                current_Temp_TV.setVisibility(View.GONE);
-                max_Temp_TV.setVisibility(View.GONE);
-                min_Temp_TV.setVisibility(View.GONE);
-                address_TV.setVisibility(View.GONE);
-            }
-        });
-
+        current_Btn.setOnClickListener(this);
+        forecast_Btn.setOnClickListener(this);
     }//end OnviewCreated Method
 
+    // Location and make url for current weather
     private void getMyLocation_And_Geocoder_Address() {
 
 
@@ -167,7 +135,7 @@ public class Current_Weather_F extends Fragment {
 //get complete weather url
                     stringUrl = String.format("weather?lat=%f&lon=%f&units=%s&appid=%s", latitude, longitude, units, weather_app_id);
 
-                    /*Log.e("string url = =  = ", "onViewCreated: " + stringUrl);*/
+                    Log.e("string url = =  = ", "onViewCreated: " + stringUrl);
 //call the weather information method
                     get_weather_Information();
 
@@ -203,6 +171,7 @@ public class Current_Weather_F extends Fragment {
 // End Latitude & Longitude
     }
 
+    //get Location and make 16 days forcast weather
     private void getMyLocation_And_Geocoder_Address_Forecast() {
 
 
@@ -224,9 +193,9 @@ public class Current_Weather_F extends Fragment {
                     longitude = location.getLongitude();
 
 //get complete weather url
-                    stringUrl = String.format("forecast/daily?lat=%f&lon=%f&cnt=10&appid=%s", latitude, longitude, weather_app_id);
+                    stringUrl = String.format("forecast/daily?lat=%f&lon=%f&cnt=16&appid=%s", latitude, longitude, weather_app_id);
 
-                    /*Log.e("string url ForeCast = ", " ForeCast: " + stringUrl);*/
+                    Log.e("string url ForeCast = ", " ForeCast: " + stringUrl);
 //call the weather information method
                     get_weather_Information_ForeCast();
 
@@ -273,12 +242,14 @@ public class Current_Weather_F extends Fragment {
         forecast_Weather_listView = view.findViewById(R.id.forecast_weather_list);
         forecast_Weather_listView_search_place = view.findViewById(R.id.forecast_weather_list_from_search_place);
         address_TV = view.findViewById(R.id.address_ID_TV);
+        progressBar = view.findViewById(R.id.progress_bar_ID);
 //initial geocoder
         geocoder = new Geocoder(getContext());
 //get Latitude & Longitude
 
     }
 
+    //get Current weather tem in text view
     public void get_weather_Information() {
 
 
@@ -303,6 +274,7 @@ public class Current_Weather_F extends Fragment {
                     current_Temp_TV.setText("Temp : " + weather_response.getMain().getTemp() + "° C");
                     max_Temp_TV.setText("Temp Max : " + weather_response.getMain().getTempMax() + "° C");
                     min_Temp_TV.setText("Temp Min : " + weather_response.getMain().getTempMin() + "° C");
+                    progressBar.setVisibility(View.GONE);
                     String imageUrl = "https://openweathermap.org/img/w/" + weather_response.getWeather().get(0).getIcon() + ".png";
                     Picasso.get().load(imageUrl).into(icon_image_View);
                 }
@@ -317,8 +289,9 @@ public class Current_Weather_F extends Fragment {
 // End Call retrofit and save value to textView
     }
 
+    //    get current weather 16 days forcast
     public void get_weather_Information_ForeCast() {
-
+progressBar.setVisibility(View.VISIBLE);
 
 //call retrofit and save value to textView
         Retrofit retrofit = new Retrofit.Builder()
@@ -340,6 +313,8 @@ public class Current_Weather_F extends Fragment {
 
                         Add_ForeCast_Adapter foreCast_adapter = new Add_ForeCast_Adapter(getActivity(), foreCastWeatherResponse.getList(), foreCastWeatherResponse.getCity());
                         forecast_Weather_listView.setAdapter(foreCast_adapter);
+                        progressBar.setVisibility(View.GONE);
+
                     }
                 }
             }
@@ -353,6 +328,7 @@ public class Current_Weather_F extends Fragment {
 // End Call retrofit and save value to textView
     }
 
+    //get search place weather Forcast
     public void get_weather_Information_ForeCast_search_Place(String stringUrl) {
 
 
@@ -365,7 +341,7 @@ public class Current_Weather_F extends Fragment {
         Weather_Service weather_service = retrofit.create(Weather_Service.class);
         final Call<ForeCast_Weather_Response> weather_responseCall = weather_service.getAllWeather_foreCast(stringUrl);
 
-        Log.e(TAG, "get_weather_Information_ForeCast_search_Place: "+stringUrl );
+        Log.e(TAG, "get_weather_Information_ForeCast_search_Place: " + stringUrl);
 
         weather_responseCall.enqueue(new Callback<ForeCast_Weather_Response>() {
             @Override
@@ -377,8 +353,8 @@ public class Current_Weather_F extends Fragment {
 
                         Add_ForeCast_Adapter foreCast_adapter = new Add_ForeCast_Adapter(getActivity(), foreCastWeatherResponse.getList(), foreCastWeatherResponse.getCity());
                         forecast_Weather_listView.setVisibility(View.GONE);
-                        forecast_Weather_listView_search_place.setVisibility(View.VISIBLE);
                         forecast_Weather_listView_search_place.setAdapter(foreCast_adapter);
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
             }
@@ -426,31 +402,62 @@ public class Current_Weather_F extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e(TAG, "onActivityResult: ok******" );
+        Log.e(TAG, "onActivityResult: ok******");
         if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
+                forecast_Weather_listView_search_place.setVisibility(View.VISIBLE);
+
                 Place place = PlaceAutocomplete.getPlace(getContext(), data);
                 latitude = place.getLatLng().latitude;
                 longitude = place.getLatLng().longitude;
 
 //get complete weather url
-                stringUrl = String.format("forecast/daily?lat=%f&lon=%f&cnt=10&appid=%s", latitude, longitude, weather_app_id);
+                stringUrl = String.format("forecast/daily?lat=%f&lon=%f&cnt=16&appid=%s", latitude, longitude, weather_app_id);
 
-                Log.e(TAG, "onActivityResult: "+stringUrl );
+                Log.e(TAG, "onActivityResult: " + stringUrl);
 
                 get_weather_Information_ForeCast_search_Place(stringUrl);
             }
         }
+    }
 
-       /* if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE && resultCode == RESULT_OK) {
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.current_weather_btn:
 
-            Place place = PlaceAutocomplete.getPlace(getContext(),data);
+                progressBar.setVisibility(View.VISIBLE);
+                //set the menu action Visible
+                setHasOptionsMenu(false);
+                forecast_Weather_listView.setVisibility(View.GONE);
+                forecast_Weather_listView_search_place.setVisibility(View.GONE);
 
-            LatLng latLng = place.getLatLng();
-            Double lat = latLng.latitude;
-            Double lon = latLng.longitude;
-            Toast.makeText(getContext(), ""+lat, Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "onActivityResult: "+lat );
-        }*/
+                icon_image_View.setVisibility(View.VISIBLE);
+                current_Temp_TV.setVisibility(View.VISIBLE);
+                max_Temp_TV.setVisibility(View.VISIBLE);
+                min_Temp_TV.setVisibility(View.VISIBLE);
+                address_TV.setVisibility(View.VISIBLE);
+
+                break;
+
+            case R.id.forecast_weather_btn:
+                progressBar.setVisibility(View.VISIBLE);
+
+                //set the menu action Visible
+                setHasOptionsMenu(true);
+
+                getMyLocation_And_Geocoder_Address_Forecast();
+
+                icon_image_View.setVisibility(View.GONE);
+                current_Temp_TV.setVisibility(View.GONE);
+                max_Temp_TV.setVisibility(View.GONE);
+                min_Temp_TV.setVisibility(View.GONE);
+                address_TV.setVisibility(View.GONE);
+
+                forecast_Weather_listView_search_place.setVisibility(View.GONE);
+
+                forecast_Weather_listView.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 }

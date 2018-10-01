@@ -19,5 +19,8 @@
         android:id="@+id/event_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:divider="@color/divider_color"
+        android:visibility="gone"
+        android:dividerHeight="6sp"
+        />
 </LinearLayout>

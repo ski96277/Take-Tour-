@@ -1,14 +1,10 @@
 package com.example.imransk.bitmproject.Activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,13 +14,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.imransk.bitmproject.Fragment.Current_Weather_F;
 import com.example.imransk.bitmproject.Fragment.List_Event_F;
+import com.example.imransk.bitmproject.Fragment.NearByPlace_F;
 import com.example.imransk.bitmproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         databaseReference = firebaseDatabase.getReference();
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,10 +158,12 @@ public class MainActivity extends AppCompatActivity
             fragment = new List_Event_F();
 
         } else if (id == R.id.nav_Weather) {
+            fab.hide();
             fragment=new Current_Weather_F();
-            Toast.makeText(this, "weather", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_nearbyplace) {
+            fab.hide();
+            fragment=new NearByPlace_F();
 
         } else if (id == R.id.nav_manage) {
 
