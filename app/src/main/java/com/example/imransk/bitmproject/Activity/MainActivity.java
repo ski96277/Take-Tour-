@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity
         databaseReference = firebaseDatabase.getReference();
 
 
-         fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,AddEventActivity.class));
+                startActivity(new Intent(MainActivity.this, AddEventActivity.class));
             }
         });
 
@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (firebaseUser!=null){
-                    String email=firebaseUser.getEmail().toString();
-                    String name=dataSnapshot.child("User").child(firebaseUser.getUid()).child("name").getValue().toString();
+                if (firebaseUser != null) {
+                    String email = firebaseUser.getEmail().toString();
+                    String name = dataSnapshot.child("User").child(firebaseUser.getUid()).child("name").getValue().toString();
                     email_Nav_ET.setText(email);
                     name_Nav_ET.setText(name);
 //                    image_nav.setImageDrawable(R.drawable.boyicon);
@@ -154,16 +154,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_event) {
-
+            fab.show();
             fragment = new List_Event_F();
 
         } else if (id == R.id.nav_Weather) {
             fab.hide();
-            fragment=new Current_Weather_F();
+            fragment = new Current_Weather_F();
 
         } else if (id == R.id.nav_nearbyplace) {
             fab.hide();
-            fragment=new NearByPlace_F();
+            fragment = new NearByPlace_F();
 
         } else if (id == R.id.nav_manage) {
 

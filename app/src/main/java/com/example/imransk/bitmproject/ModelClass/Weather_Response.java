@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Weather_Response {
+public class Weather_Response{
 
     @SerializedName("coord")
     @Expose
@@ -365,7 +365,7 @@ public class Weather_Response {
         private Double speed;
         @SerializedName("deg")
         @Expose
-        private Integer deg;
+        private Double deg;
 
         public Double getSpeed() {
             return speed;
@@ -375,11 +375,11 @@ public class Weather_Response {
             this.speed = speed;
         }
 
-        public Integer getDeg() {
+        public Double getDeg() {
             return deg;
         }
 
-        public void setDeg(Integer deg) {
+        public void setDeg(Double deg) {
             this.deg = deg;
         }
 

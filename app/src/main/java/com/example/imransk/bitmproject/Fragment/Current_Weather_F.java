@@ -135,7 +135,7 @@ public class Current_Weather_F extends Fragment implements View.OnClickListener 
 //get complete weather url
                     stringUrl = String.format("weather?lat=%f&lon=%f&units=%s&appid=%s", latitude, longitude, units, weather_app_id);
 
-                    Log.e("string url = =  = ", "onViewCreated: " + stringUrl);
+
 //call the weather information method
                     get_weather_Information();
 
@@ -169,6 +169,46 @@ public class Current_Weather_F extends Fragment implements View.OnClickListener 
 
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
 // End Latitude & Longitude
+    }
+
+    //get Current weather tem in text view
+    public void get_weather_Information() {
+
+
+//call retrofit and save value to textView
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Weather_Service weather_service = retrofit.create(Weather_Service.class);
+        final Call<Weather_Response> weather_responseCall = weather_service.getAllWeather(stringUrl);
+        Log.e("string url = =  = ", "onViewCreated: " + stringUrl);
+        weather_responseCall.enqueue(new Callback<Weather_Response>() {
+            @Override
+            public void onResponse(Call<Weather_Response> call, Response<Weather_Response> response) {
+
+                if (response.code() == 200) {
+                    Weather_Response weather_response = response.body();
+
+
+                    /*Log.e("Temp  - - - -", "onResponse: " + weather_response.getMain().getTemp());*/
+                    current_Temp_TV.setText("Temp : " + weather_response.getMain().getTemp() + "° C");
+                    max_Temp_TV.setText("Temp Max : " + weather_response.getMain().getTempMax() + "° C");
+                    min_Temp_TV.setText("Temp Min : " + weather_response.getMain().getTempMin() + "° C");
+                    progressBar.setVisibility(View.GONE);
+                    String imageUrl = "https://openweathermap.org/img/w/" + weather_response.getWeather().get(0).getIcon() + ".png";
+                    Picasso.get().load(imageUrl).into(icon_image_View);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Weather_Response> call, Throwable t) {
+
+            }
+        });
+
+// End Call retrofit and save value to textView
     }
 
     //get Location and make 16 days forcast weather
@@ -249,45 +289,6 @@ public class Current_Weather_F extends Fragment implements View.OnClickListener 
 
     }
 
-    //get Current weather tem in text view
-    public void get_weather_Information() {
-
-
-//call retrofit and save value to textView
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        Weather_Service weather_service = retrofit.create(Weather_Service.class);
-        final Call<Weather_Response> weather_responseCall = weather_service.getAllWeather(stringUrl);
-
-        weather_responseCall.enqueue(new Callback<Weather_Response>() {
-            @Override
-            public void onResponse(Call<Weather_Response> call, Response<Weather_Response> response) {
-
-                if (response.code() == 200) {
-                    Weather_Response weather_response = response.body();
-
-
-                    /*Log.e("Temp  - - - -", "onResponse: " + weather_response.getMain().getTemp());*/
-                    current_Temp_TV.setText("Temp : " + weather_response.getMain().getTemp() + "° C");
-                    max_Temp_TV.setText("Temp Max : " + weather_response.getMain().getTempMax() + "° C");
-                    min_Temp_TV.setText("Temp Min : " + weather_response.getMain().getTempMin() + "° C");
-                    progressBar.setVisibility(View.GONE);
-                    String imageUrl = "https://openweathermap.org/img/w/" + weather_response.getWeather().get(0).getIcon() + ".png";
-                    Picasso.get().load(imageUrl).into(icon_image_View);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Weather_Response> call, Throwable t) {
-
-            }
-        });
-
-// End Call retrofit and save value to textView
-    }
 
     //    get current weather 16 days forcast
     public void get_weather_Information_ForeCast() {
