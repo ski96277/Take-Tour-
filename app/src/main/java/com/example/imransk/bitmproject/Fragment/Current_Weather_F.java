@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -97,6 +98,9 @@ public class Current_Weather_F extends Fragment implements View.OnClickListener 
         getActivity().setTitle("Weather");
 
         return inflater.inflate(R.layout.current_weather_f, null);
+
+
+
     }
 
     @Override
@@ -105,6 +109,7 @@ public class Current_Weather_F extends Fragment implements View.OnClickListener 
 
         this.view = view;
         initialize();
+
         getMyLocation_And_Geocoder_Address();
 
         current_Btn.setOnClickListener(this);

@@ -47,6 +47,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -111,7 +112,6 @@ public class NearByPlace_F extends Fragment implements OnMapReadyCallback, Botto
         fragmentTransaction.commit();
 //map load in background
         mapFragment.getMapAsync(this);
-
 
     }
 
@@ -260,6 +260,7 @@ public class NearByPlace_F extends Fragment implements OnMapReadyCallback, Botto
                     e.printStackTrace();
                 }
             }
+
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {

@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.imransk.bitmproject.ModelClass.Add_Event;
 import com.example.imransk.bitmproject.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -151,21 +153,32 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
 
 
         if (TextUtils.isEmpty(place)) {
+            //animation
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(place_name_ET);
             place_name_ET.setError("Place Name");
             place_name_ET.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(start_Date)) {
+            //animation
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(start_Journey_Date_ET);
+
             start_Journey_Date_ET.setError("Place Name");
             start_Journey_Date_ET.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(end_Date)) {
+            //animation
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(end_Journey_Date_ET);
+
             end_Journey_Date_ET.setError("Place Name");
             end_Journey_Date_ET.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(budget)) {
+            //animation
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(journey_budget_ET);
+
             journey_budget_ET.setError("Place Name");
             journey_budget_ET.requestFocus();
             return;

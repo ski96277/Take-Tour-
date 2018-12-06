@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.imransk.bitmproject.ModelClass.SignUpClass;
 import com.example.imransk.bitmproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,24 +62,34 @@ public class SignUpActivity extends AppCompatActivity {
         pass = pass_ET.getText().toString();
 
         if (TextUtils.isEmpty(name)) {
+            //animation
+
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(name_ET);
+
             name_ET.setError("Enter name");
             name_ET.requestFocus();
             return;
 
         }
         if (TextUtils.isEmpty(email)) {
+            //animation
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(email_ET);
+
             email_ET.setError("Enter e-mail");
             email_ET.requestFocus();
             return;
 
         }
         if (TextUtils.isEmpty(pass)) {
+            //animation
+
+            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(pass_ET);
             pass_ET.setError("Enter password");
             pass_ET.requestFocus();
             return;
         }
 
-        ProgressBar progressBar = findViewById(R.id.sign_up_progress);
+        final ProgressBar progressBar = findViewById(R.id.sign_up_progress);
         progressBar.setVisibility(View.VISIBLE);
 
         firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -97,6 +109,12 @@ public class SignUpActivity extends AppCompatActivity {
                     finish();
 
                 } else {
+                    progressBar.setVisibility(View.GONE);
+                    //animation
+                    YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(name_ET);
+                    YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(email_ET);
+                    YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(pass_ET);
+
                     Toast.makeText(SignUpActivity.this, "having some problem", Toast.LENGTH_SHORT).show();
 
                 }

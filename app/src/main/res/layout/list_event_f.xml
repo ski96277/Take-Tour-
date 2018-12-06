@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/background"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/background"
+    app:cardCornerRadius="50dp">
 
     <TextView
         android:id="@+id/add_event"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="35sp"
+        android:text="Add Event"
+        android:background="@color/colorPrimary"
         android:textColor="@color/text_color"
-        android:text="Add Event"/>
+        android:textSize="35sp"
+        android:padding="20sp"
+        android:layout_margin="20sp"/>
+
+</android.support.v7.widget.CardView>
 
     <ListView
         android:id="@+id/event_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/divider_color"
         android:visibility="gone"
         android:dividerHeight="6sp"
         />
+
 </LinearLayout>

@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:fillViewport="true">
+
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:background="@color/background">
 
         <Button
             android:id="@+id/current_weather_btn"
@@ -37,78 +51,86 @@
             android:textColor="@color/text_color"
             android:textSize="25sp" />
     </LinearLayout>
+</android.support.v7.widget.CardView>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        android:orientation="vertical"
-        android:padding="10sp">
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
 
-        <ListView
-            android:id="@+id/forecast_weather_list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" />
+            android:background="@color/background"
+            android:orientation="vertical"
+            android:padding="10sp">
 
-        <ListView
-            android:id="@+id/forecast_weather_list_from_search_place"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
+            <ListView
+                android:id="@+id/forecast_weather_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/address_ID_TV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="city name"
-            android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            <ListView
+                android:id="@+id/forecast_weather_list_from_search_place"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
 
-        <ProgressBar
-            android:id="@+id/progress_bar_ID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/address_ID_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="city name"
+                android:textColor="@color/text_color"
+                android:textSize="25sp" />
 
-        <ImageView
-            android:id="@+id/temp_icon_image_View"
-            android:layout_width="150sp"
-            android:layout_height="100sp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10sp" />
+            <ProgressBar
+                android:id="@+id/progress_bar_ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/current_tempture_TV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:text="Temp : 00° C"
+            <ImageView
+                android:id="@+id/temp_icon_image_View"
+                android:layout_width="150sp"
+                android:layout_height="100sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10sp" />
 
-            android:textColor="@color/text_color"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/current_tempture_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="Temp : 00° C"
 
-        <TextView
-            android:id="@+id/current_tempture_MIN_TV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:text="Max Temp : 00° C"
+                android:textColor="@color/text_color"
+                android:textSize="30sp" />
 
-            android:textColor="@color/text_color"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/current_tempture_MIN_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="Max Temp : 00° C"
 
-        <TextView
-            android:id="@+id/current_tempture_Max_TV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:text="Min Temp : 00° C"
+                android:textColor="@color/text_color"
+                android:textSize="30sp" />
 
-            android:textColor="@color/text_color"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/current_tempture_Max_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="Min Temp : 00° C"
 
-    </LinearLayout>
+                android:textColor="@color/text_color"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
+</ScrollView>

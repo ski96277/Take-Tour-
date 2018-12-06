@@ -126,7 +126,7 @@ android:textSize="17sp"
                 android:layout_weight=".5"
                 android:background="@drawable/buttonshape"
                 android:gravity="center"
-                android:text="Budget"
+                android:text="Budget:"
                 android:textColor="@color/text_color"
                 android:textSize="20sp"/>
 

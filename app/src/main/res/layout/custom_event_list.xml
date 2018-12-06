@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 <LinearLayout
     android:layout_width="match_parent"
     android:orientation="horizontal"
@@ -15,7 +22,8 @@
         android:text="Place"
         android:textColor="@color/text_color"
         android:textSize="25sp"
-        android:paddingLeft="15sp"/>
+        android:paddingLeft="15sp"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/budget_id_TV"
@@ -25,7 +33,8 @@
         android:textColor="@color/text_color"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Budget" />
+        android:text="Budget"
+        android:singleLine="true"/>
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +48,8 @@
             android:layout_weight="1.3"
             android:text="start Date"
             android:textSize="25sp"
-            android:paddingLeft="15sp"/>
+            android:paddingLeft="15sp"
+            android:singleLine="true"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,7 +68,9 @@
             android:textColor="@color/text_color"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="end Date" />
+            android:text="end Date"
+            android:singleLine="true"/>
     </LinearLayout>
 
 </LinearLayout>
+</android.support.v7.widget.CardView>

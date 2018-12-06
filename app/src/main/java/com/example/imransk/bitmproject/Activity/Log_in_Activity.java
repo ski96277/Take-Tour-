@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.imransk.bitmproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -57,13 +59,21 @@ public class Log_in_Activity extends AppCompatActivity {
                 password = pass_ET.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
+                    //animation
+                    YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(email_ET);
+
                     email_ET.setError("Enter E-mail");
                     email_ET.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
+                    //animation
+
+                    YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(pass_ET);
+
                     pass_ET.setError("Enter Password");
                     pass_ET.requestFocus();
+
                     return;
                 }
                 final ProgressBar progressBar = findViewById(R.id.log_in_progress);
@@ -78,6 +88,9 @@ public class Log_in_Activity extends AppCompatActivity {
                             finish();
                         } else {
                             progressBar.setVisibility(View.GONE);
+                            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(email_ET);
+                            YoYo.with(Techniques.Shake).duration(1000).repeat(0).playOn(pass_ET);
+
                             Toast.makeText(Log_in_Activity.this, "having Problem", Toast.LENGTH_SHORT).show();
                         }
                     }
